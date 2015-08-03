@@ -8,4 +8,11 @@ node[:deploy].each do |application, deploy|
     action :create
     recursive true
   end
+    directory "#{deploy[:deploy_to]}/shared/cache" do
+    group deploy[:group]
+    owner deploy[:user]
+    mode 0775
+    action :create
+    recursive true
+  end
 end
